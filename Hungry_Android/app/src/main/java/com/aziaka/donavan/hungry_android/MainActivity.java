@@ -2,17 +2,19 @@ package com.aziaka.donavan.hungry_android;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements RestaurantFragment.OnFragmentInteractionListener, ListFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener {
 
     Bundle instance = null;
+    private FragmentTransaction mFragmentTransaction;
+    private FragmentManager mFragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +23,19 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         instance = savedInstanceState;
-        changeFragment(savedInstanceState, "Restaurant");
-        // fab button
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
+
+        if (savedInstanceState == null)
+        {
+            System.out.println("NOPE");
+
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.fragment_container, new RestaurantFragment());
+            mFragmentTransaction.commit();
+        }
+
+
     }
 
 
@@ -54,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             changeFragment(instance, "Settings");
             return true;
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
 
     public void changeFragment (Bundle savedInstanceState, String fragmentName) {
 
-        System.out.print("Before !");
         if (findViewById(R.id.fragment_container) != null) {
 
             System.out.print("After !");
