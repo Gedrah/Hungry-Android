@@ -2,6 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context="com.aziaka.donavan.hungry_android.RestaurantFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -9,5 +10,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="fragment restaurant"/>
+    <com.dd.CircularProgressButton
+            android:id="@+id/finderButton"
+            android:layout_gravity="center"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cpb_cornerRadius="48dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:cpb_textIdle="@string/button_start" />
 
 </FrameLayout>
