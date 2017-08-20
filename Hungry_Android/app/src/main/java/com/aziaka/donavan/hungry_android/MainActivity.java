@@ -9,9 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements RestaurantFragment.OnFragmentInteractionListener, ListFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements RestaurantFragment.OnFragmentInteractionListener,
+        ListFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AboutFragment.OnFragmentInteractionListener {
 
-    Bundle instance = null;
     private FragmentTransaction mFragmentTransaction;
     private FragmentManager mFragmentManager;
 
@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        instance = savedInstanceState;
-
 
         if (savedInstanceState == null)
         {
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
             mFragmentTransaction.replace(R.id.fragment_container, new RestaurantFragment());
             mFragmentTransaction.commit();
         }
-
 
     }
 
@@ -60,57 +57,66 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            changeFragment(instance, "Settings");
+            changeFragment("Settings");
             return true;
         }
         if (id == R.id.action_list) {
-            changeFragment(instance, "List");
+            changeFragment("List");
             return true;
         }
         if (id == R.id.action_about) {
-            changeFragment(instance, "Settings");
+            changeFragment("About");
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void changeFragment (Bundle savedInstanceState, String fragmentName) {
+    public void changeFragment (String fragmentName) {
 
         if (findViewById(R.id.fragment_container) != null) {
 
             System.out.print("After !");
 
-            // However, if we're being restored from a previous state,
-            // then we don't need to do anything and should return or else
-            // we could end up with overlapping fragments.
-            if (savedInstanceState != null) {
-                return;
-            }
 
-
-            if (fragmentName == "Restaurant")
+            if (fragmentName == "About")
             {
-                RestaurantFragment firstFragment = new RestaurantFragment();
-                firstFragment.setArguments(getIntent().getExtras());
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).commit();
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.fragment_container, new AboutFragment());
+                mFragmentTransaction.commit();
             }
             else if (fragmentName == "Settings")
             {
-                SettingsFragment firstFragment = new SettingsFragment();
-                firstFragment.setArguments(getIntent().getExtras());
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).commit();
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.fragment_container, new SettingsFragment());
+                mFragmentTransaction.commit();
             }
             else if (fragmentName == "List")
             {
-                ListFragment firstFragment = new ListFragment();
-                firstFragment.setArguments(getIntent().getExtras());
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).commit();
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.fragment_container,  new ListFragment());
+                mFragmentTransaction.commit();
             }
-
         }
 
     }
+
+    /*
+   @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+            return;
+        }
+
+        getFragmentManager().getFragment().getString() ==
+        // Otherwise defer to system default behavior.
+        super.onBackPressed();
+    }
+    */
 
     @Override
     public void onFragmentInteraction(Uri uri) {
