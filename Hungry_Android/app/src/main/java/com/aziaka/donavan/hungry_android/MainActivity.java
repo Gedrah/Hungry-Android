@@ -80,9 +80,10 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
             }
             else if (fragmentName == "Settings")
             {
+                SettingsFragment fragment = new SettingsFragment();
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.fragment_container, new SettingsFragment(), "Settings");
+                mFragmentTransaction.replace(R.id.fragment_container, fragment, "Settings");
                 mFragmentTransaction.commit();
             }
             else if (fragmentName == "List")
