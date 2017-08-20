@@ -2,6 +2,7 @@ package com.aziaka.donavan.hungry_android;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.app.FragmentManager;
@@ -23,15 +24,9 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Load the first fragment Restaurant
         if (savedInstanceState == null)
-        {
-            System.out.println("NOPE");
-
-            mFragmentManager = getSupportFragmentManager();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.fragment_container, new RestaurantFragment());
-            mFragmentTransaction.commit();
-        }
+            changeFragment("Restaurant");
 
     }
 
@@ -76,47 +71,49 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
 
         if (findViewById(R.id.fragment_container) != null) {
 
-            System.out.print("After !");
-
-
             if (fragmentName == "About")
             {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.fragment_container, new AboutFragment());
+                mFragmentTransaction.replace(R.id.fragment_container, new AboutFragment(), "About");
                 mFragmentTransaction.commit();
             }
             else if (fragmentName == "Settings")
             {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.fragment_container, new SettingsFragment());
+                mFragmentTransaction.replace(R.id.fragment_container, new SettingsFragment(), "Settings");
                 mFragmentTransaction.commit();
             }
             else if (fragmentName == "List")
             {
                 mFragmentManager = getSupportFragmentManager();
                 mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.fragment_container,  new ListFragment());
+                mFragmentTransaction.replace(R.id.fragment_container,  new ListFragment(), "List");
+                mFragmentTransaction.commit();
+            }
+            else {
+                mFragmentManager = getSupportFragmentManager();
+                mFragmentTransaction = mFragmentManager.beginTransaction();
+                mFragmentTransaction.replace(R.id.fragment_container, new RestaurantFragment(), "Restaurant");
                 mFragmentTransaction.commit();
             }
         }
 
     }
 
-    /*
    @Override
     public void onBackPressed() {
-        if (mWebView.canGoBack()) {
-            mWebView.goBack();
-            return;
-        }
 
-        getFragmentManager().getFragment().getString() ==
-        // Otherwise defer to system default behavior.
-        super.onBackPressed();
+       Fragment currentFragment = mFragmentManager.findFragmentById(R.id.fragment_container);
+
+       if (currentFragment instanceof RestaurantFragment) {
+           super.onBackPressed();
+       }
+       else {
+           changeFragment("Restaurant");
+       }
     }
-    */
 
     @Override
     public void onFragmentInteraction(Uri uri) {
