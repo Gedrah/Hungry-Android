@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
     }
 
 
-
     /*
     **
     ** add the main menu with settings, lists and about
@@ -43,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -67,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         return super.onOptionsItemSelected(item);
     }
 
+
+    /*
+    * Method where i switch between fragment
+    *
+    */
     public void changeFragment (String fragmentName) {
 
         if (findViewById(R.id.fragment_container) != null) {
@@ -80,11 +86,7 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
             }
             else if (fragmentName == "Settings")
             {
-                SettingsFragment fragment = new SettingsFragment();
-                mFragmentManager = getSupportFragmentManager();
-                mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.fragment_container, fragment, "Settings");
-                mFragmentTransaction.commit();
+                // Need datas before so it will be up when the first release will come out.
             }
             else if (fragmentName == "List")
             {
