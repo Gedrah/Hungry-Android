@@ -7,8 +7,9 @@
               android:orientation="horizontal">
             <ListView android:id="@+id/RestaurantList"
                       android:layout_width="fill_parent"
-                      android:choiceMode="multipleChoiceModal"
-                      android:layout_height="wrap_content" />
+                      android:layout_height="400dp"
+                      android:layout_alignParentTop="true"
+                      android:layout_above="@+id/validButton"/>
           <com.dd.CircularProgressButton
                   android:id="@+id/validButton"
                   android:layout_width="match_parent"
