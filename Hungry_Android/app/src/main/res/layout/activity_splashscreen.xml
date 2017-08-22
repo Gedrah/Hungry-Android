@@ -8,10 +8,10 @@
         tools:context="com.aziaka.donavan.hungry_android.Splashscreen">
     <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:indicatorColor="@color/about_github_color"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            app:indicatorName="BallPulseIndicator"/>
+            app:indicatorName="PacmanIndicator"/>
 </RelativeLayout>

@@ -8,7 +8,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 public class Splashscreen extends AppCompatActivity {
 
-    private int SPLASH_SCREEN_TIMEOUT = 3000;
+    private int SPLASH_SCREEN_TIMEOUT = 2000;
     private AVLoadingIndicatorView avi;
 
     @Override
