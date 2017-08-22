@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class Splashscreen extends AppCompatActivity {
 
     private int SPLASH_SCREEN_TIMEOUT = 3000;
+    private AVLoadingIndicatorView avi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +17,10 @@ public class Splashscreen extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         getSupportActionBar().hide();
+
+        avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
+
+        avi.show();
 
         new Handler().postDelayed(new Runnable() {
             @Override
