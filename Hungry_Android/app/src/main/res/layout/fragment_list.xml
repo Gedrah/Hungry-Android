@@ -2,23 +2,10 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               tools:context="com.aziaka.donavan.hungry_android.ListFragment"
               android:orientation="horizontal">
             <ListView android:id="@+id/RestaurantList"
                       android:layout_width="fill_parent"
-                      android:layout_height="400dp"
-                      android:layout_alignParentTop="true"
-                      android:layout_above="@+id/validButton"/>
-          <com.dd.CircularProgressButton
-                  android:id="@+id/validButton"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  app:cpb_cornerRadius="50dp"
-                  android:textColor="#FFFFFF"
-                  android:textSize="18dp"
-                  app:cpb_textIdle="Valider"
-                  android:layout_alignParentBottom="true"
-                  android:layout_alignParentStart="true"
-                  android:layout_marginBottom="10dp"/>
+                      android:layout_height="fill_parent"
+                      android:layout_alignParentTop="true"/>
 </RelativeLayout>
