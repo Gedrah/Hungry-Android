@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.wang.avi.AVLoadingIndicatorView;
 
+//TODO add the title Hungry, same as About Page
+
 public class Splashscreen extends AppCompatActivity {
 
-    private int SPLASH_SCREEN_TIMEOUT = 2000;
+    private int SPLASH_SCREEN_TIMEOUT = 1900;
     private AVLoadingIndicatorView avi;
 
     @Override
