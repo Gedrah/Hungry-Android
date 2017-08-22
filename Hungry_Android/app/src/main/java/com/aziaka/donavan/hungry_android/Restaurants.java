@@ -11,10 +11,6 @@ public class Restaurants {
     private boolean isChecked = true;
 
 
-    public Restaurants() {
-
-    }
-
     public Restaurants(String title, String address) {
         this.addressRestaurant = address;
         this.nameRestaurant = title;

@@ -23,6 +23,7 @@ public class ListFragment extends Fragment {
     }
 
 
+    // TODO remove this method with the list
     private void createList() {
         RestoList = new ArrayList<Restaurants>();
         String string = "Afghanistan";

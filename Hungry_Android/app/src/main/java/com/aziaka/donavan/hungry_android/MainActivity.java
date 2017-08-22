@@ -2,6 +2,7 @@ package com.aziaka.donavan.hungry_android;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
             else if (fragmentName == "Settings")
             {
                 // Need datas before so it will be up when the first release will come out.
+
+                Snackbar.make(findViewById(android.R.id.content), "Settings will be available in the next Release.", Snackbar.LENGTH_LONG).show();
             }
             else if (fragmentName == "List")
             {
@@ -105,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
 
     }
 
-   @Override
+
+    @Override
     public void onBackPressed() {
 
        Fragment currentFragment = mFragmentManager.findFragmentById(R.id.fragment_container);
