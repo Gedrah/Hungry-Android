@@ -11,11 +11,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements RestaurantFragment.OnFragmentInteractionListener,
-        ListFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, AboutFragment.OnFragmentInteractionListener {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements ListFragment.OnDataPass, RestaurantFragment.OnDataPass {
 
     private FragmentTransaction mFragmentTransaction;
     private FragmentManager mFragmentManager;
+    private ArrayList<Restaurants> RestoList = null;
 
 
     @Override
@@ -25,11 +27,31 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        createList();
+
+
         // Load the first fragment Restaurant
         if (savedInstanceState == null)
             changeFragment("Restaurant");
 
     }
+
+
+
+    // TODO remove this method with the list
+    private void createList() {
+        RestoList = new ArrayList<Restaurants>();
+        Restaurants resto = new Restaurants("Afghanistan", "Albania");
+        RestoList.add(resto);
+
+        for (int i = 0; i < 15; i++)
+        {
+            Restaurants restos = new Restaurants("Resto " + Integer.toString(i), "Address " + Integer.toString(i));
+            RestoList.add(restos);
+        }
+
+    }
+
 
 
     /*
@@ -122,8 +144,18 @@ public class MainActivity extends AppCompatActivity implements RestaurantFragmen
        }
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
+    public void setRestoList (ArrayList<Restaurants> newRestos) {
+        this.RestoList = newRestos;
     }
+
+    public ArrayList<Restaurants> getRestoList () {
+        return this.RestoList;
+    }
+
+    @Override
+    public void onDataPass(ArrayList<Restaurants> data) {
+        this.RestoList = data;
+    }
+
 }

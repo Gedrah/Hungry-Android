@@ -32,7 +32,5 @@ public class AboutFragment extends Fragment {
         return aboutPage;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

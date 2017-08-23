@@ -7,9 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 
 public class RestaurantFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
 
     public RestaurantFragment() {
         // Required empty public constructor
@@ -19,12 +20,23 @@ public class RestaurantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+
         return inflater.inflate(R.layout.fragment_restaurant, container, false);
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    /*
+    ** Main method that will choose a restaurant randomly
+     */
+    private void rollRestaurant() {
+
     }
+
+
+    public interface OnDataPass {
+        public void onDataPass(ArrayList<Restaurants> data);
+    }
+
 }
