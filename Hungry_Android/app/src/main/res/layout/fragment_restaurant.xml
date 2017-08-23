@@ -1,9 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             tools:context="com.aziaka.donavan.hungry_android.RestaurantFragment">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:fancy="http://schemas.android.com/apk/res-auto"
+                tools:context="com.aziaka.donavan.hungry_android.RestaurantFragment">
 
     <!--<ImageView
             android:layout_width="wrap_content"
@@ -27,16 +26,22 @@
             android:layout_below="@id/restaurantName"
             android:layout_centerInParent="true"
             android:text="Address restaurant"/>
-    <com.dd.CircularProgressButton
+    <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/finderButton"
-            android:layout_width="196dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="16dp"
-            app:cpb_cornerRadius="48dp"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
             android:layout_above="@id/restaurantName"
-            app:cpb_textIdle="@string/button_start" />
-
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#7ab800"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="30dp"
+            fancy:fb_text="Find me a restaurant !"
+            fancy:fb_textColor="#FFFFFF" />
 </RelativeLayout>

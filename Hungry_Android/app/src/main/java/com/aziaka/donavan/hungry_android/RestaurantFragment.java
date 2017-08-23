@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import org.w3c.dom.Text;
+import mehdi.sakout.fancybuttons.FancyButton;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,6 +20,7 @@ public class RestaurantFragment extends Fragment {
     private ListFragment.OnDataPass dataPasser;
     TextView restoName = null;
     TextView restoAddress = null;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,13 +28,20 @@ public class RestaurantFragment extends Fragment {
 
         RestoList = ((MainActivity) getActivity()).getRestoList();
 
-        View view = inflater.inflate(R.layout.fragment_restaurant, container, false);
+        view = inflater.inflate(R.layout.fragment_restaurant, container, false);
 
 
         restoName = (TextView) view.findViewById(R.id.restaurantName);
         restoAddress = (TextView) view.findViewById(R.id.restaurantAddress);
 
+        FancyButton findResto = (FancyButton) view.findViewById(R.id.finderButton);
 
+        findResto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rollRestaurant();
+            }
+        });
 
         return view;
     }
@@ -55,8 +63,9 @@ public class RestaurantFragment extends Fragment {
         }
 
         // check if atleast one restaurant is checked
-        for (int i = 0; i < RestoList.size() || checking; i++)
+        for (int i = 0; i < RestoList.size(); i++)
         {
+            System.out.println("Number : " + Integer.toString(i));
             Restaurants item = RestoList.get(i);
             if (item.isChecked()) {
                 checking = true;
@@ -66,7 +75,7 @@ public class RestaurantFragment extends Fragment {
         //check if checking is true
         if (!checking)
         {
-            Snackbar.make(getView().findViewById(android.R.id.content), "Error: Check at least one restaurant.", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, "Error: Select at least one restaurant.", Snackbar.LENGTH_LONG).show();
             return;
         }
 
@@ -79,7 +88,6 @@ public class RestaurantFragment extends Fragment {
                 setRestoInfo(item);
                 return;
             }
-
         }
 
     }
@@ -102,7 +110,6 @@ public class RestaurantFragment extends Fragment {
 
     @Override
     public void onDetach() {
-        passData(this.RestoList);
         super.onDetach();
     }
 

@@ -40,10 +40,8 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnDa
     // TODO remove this method with the list
     private void createList() {
         RestoList = new ArrayList<Restaurants>();
-        Restaurants resto = new Restaurants("Afghanistan", "Albania");
-        RestoList.add(resto);
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 20; i++)
         {
             Restaurants restos = new Restaurants("Resto " + Integer.toString(i), "Address " + Integer.toString(i));
             RestoList.add(restos);
