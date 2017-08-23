@@ -19,7 +19,7 @@ public class RestaurantArrayAdapter extends ArrayAdapter<Restaurants> {
     public RestaurantArrayAdapter(Context context, List<Restaurants> restoList) {
         super(context, R.layout.item_restaurant, R.id.TextRestaurant, restoList);
         // Cache the LayoutInflate to avoid asking for a new one each time.
-        inflater = LayoutInflater.from(context) ;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
