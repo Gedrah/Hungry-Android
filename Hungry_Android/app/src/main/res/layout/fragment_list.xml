@@ -1,13 +1,11 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.aziaka.donavan.hungry_android.ListFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Fragment list"/>
-
-</FrameLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.aziaka.donavan.hungry_android.ListFragment"
+              android:orientation="horizontal">
+            <ListView android:id="@+id/RestaurantList"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:layout_alignParentTop="true"/>
+</RelativeLayout>
